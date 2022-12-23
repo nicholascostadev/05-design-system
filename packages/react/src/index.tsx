@@ -1,5 +1,12 @@
-import { colors } from '@ignite-ui/tokens'
+import { styled } from './styles'
+
+const Button = styled('button', {
+  fontFamily: '$defalt',
+  backgroundColor: '$ignite500',
+  borderRadius: '$md',
+  padding: '$4',
+})
 
 export function App() {
-  <div>Test</div>
+  return <Button>Test</Button>
 }
