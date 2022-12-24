@@ -29,3 +29,5 @@ export const Heading = styled('h2', {
 export type HeadingProps = Stitches.ComponentProps<typeof Heading> & {
   as?: ElementType
 }
+
+Heading.displayName = 'Heading'

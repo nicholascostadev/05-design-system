@@ -13,3 +13,5 @@ export const Box = styled('button', {
 export type BoxProps = Stitches.ComponentProps<typeof Box> & {
   as?: ElementType
 }
+
+Box.displayName = 'Box'

@@ -34,3 +34,5 @@ export const Text = styled('p', {
 export type TextProps = Stitches.ComponentProps<typeof Text> & {
   as?: ElementType
 }
+
+Text.displayName = 'Text'
