@@ -13,7 +13,8 @@ var colors = {
   ignite300: "#00B37E",
   ignite500: "#00875F",
   ignite700: "#015F43",
-  ignite900: "#00291D"
+  ignite900: "#00291D",
+  test: "#FFF"
 };
 var space = {
   1: "0.25rem",
@@ -99,30 +100,463 @@ var {
   }
 });
 
-// src/index.tsx
-var Button = styled("button", {
+// src/components/Box.tsx
+var Box = styled("button", {
+  padding: "$4",
+  borderRadius: "$md",
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600",
+  width: "100%"
+});
+Box.displayName = "Box";
+
+// src/components/Text.tsx
+var Text = styled("p", {
   fontFamily: "$default",
-  backgroundColor: "$ignite300",
-  borderRadius: "$sm",
-  border: 0,
-  fontWeight: "bold",
-  color: "$white",
+  lineHeight: "$base",
+  margin: 0,
+  color: "$gray100",
   variants: {
     size: {
-      small: {
-        fontSize: 14,
-        padding: "$2 $4"
+      xxs: { fontSize: "$xxs" },
+      xs: { fontSize: "$xs" },
+      sm: { fontSize: "$sm" },
+      md: { fontSize: "$md" },
+      lg: { fontSize: "$lg" },
+      xl: { fontSize: "$xl" },
+      "2xl": { fontSize: "$2xl" },
+      "4xl": { fontSize: "$4xl" },
+      "5xl": { fontSize: "$5xl" },
+      "6xl": { fontSize: "$6xl" },
+      "7xl": { fontSize: "$7xl" },
+      "8xl": { fontSize: "$8xl" },
+      "9xl": { fontSize: "$9xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+Text.displayName = "Text";
+
+// src/components/Heading.tsx
+var Heading = styled("h2", {
+  fontFamily: "$default",
+  lineHeight: "$shorter",
+  margin: 0,
+  color: "$gray100",
+  variants: {
+    size: {
+      sm: { fontSize: "$xl" },
+      md: { fontSize: "$2xl" },
+      lg: { fontSize: "$4xl" },
+      "2xl": { fontSize: "$5xl" },
+      "3xl": { fontSize: "$6xl" },
+      "4xl": { fontSize: "$7xl" },
+      "5xl": { fontSize: "$8xl" },
+      "6xl": { fontSize: "$9xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+Heading.displayName = "Heading";
+
+// src/components/Avatar/styles.ts
+import * as Avatar from "@radix-ui/react-avatar";
+var AvatarContainer = styled(Avatar.Root, {
+  display: "inline-block",
+  borderRadius: "$full",
+  width: "$12",
+  height: "$12",
+  overflow: "hidden"
+});
+var AvatarImage = styled(Avatar.Image, {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  borderRadius: "inherit"
+});
+var AvatarFallback = styled(Avatar.Fallback, {
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "$gray600",
+  color: "$gray800",
+  svg: {
+    width: "$6",
+    height: "$6"
+  }
+});
+
+// src/components/Avatar/index.tsx
+import { User } from "phosphor-react";
+import { jsx, jsxs } from "react/jsx-runtime";
+var Avatar2 = (props) => {
+  return /* @__PURE__ */ jsxs(AvatarContainer, {
+    children: [
+      /* @__PURE__ */ jsx(AvatarImage, {
+        ...props
+      }),
+      /* @__PURE__ */ jsx(AvatarFallback, {
+        delayMs: 600,
+        children: /* @__PURE__ */ jsx(User, {})
+      })
+    ]
+  });
+};
+Avatar2.displayName = "Avatar";
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  padding: "0 $4",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        background: "$ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite300"
+        },
+        "&:disabled": {
+          background: "$gray200"
+        }
       },
-      big: {
-        fontSize: 16,
-        padding: "$3 $6"
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite500",
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600",
+          borderColor: "$gray200"
+        }
+      }
+    },
+    size: {
+      sm: {
+        height: 38
+      },
+      md: {
+        height: 46
       }
     }
   },
   defaultVariants: {
-    size: "small"
+    variant: "primary",
+    size: "md"
   }
 });
+Button.displayName = "Button";
+
+// src/components/TextInput/styles.ts
+var TextInputContainer = styled("div", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  boxSizing: "border-box",
+  borderRadius: "$sm",
+  border: "2px solid $gray900",
+  display: "flex",
+  alignItems: "baseline",
+  "&:has(input:focus)": {
+    borderColor: "$ignite300"
+  },
+  "&:has(input:disabled)": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  }
+});
+var Prefix = styled("span", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  color: "$gray400"
+});
+var Input = styled("input", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  fontWeight: "$regular",
+  color: "$white",
+  background: "transparent",
+  border: 0,
+  width: "100%",
+  "&:focus": {
+    outline: 0
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  "&::placeholder": {
+    color: "$gray400"
+  }
+});
+
+// src/components/TextInput/index.tsx
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+var TextInput = ({ prefix, ...rest }) => {
+  return /* @__PURE__ */ jsxs2(TextInputContainer, {
+    children: [
+      prefix && /* @__PURE__ */ jsx2(Prefix, {
+        children: prefix
+      }),
+      /* @__PURE__ */ jsx2(Input, {
+        ...rest
+      })
+    ]
+  });
+};
+TextInput.displayName = "TextInput";
+
+// src/components/TextArea.tsx
+var TextArea = styled("textarea", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  boxSizing: "border-box",
+  borderRadius: "$sm",
+  border: "2px solid $gray900",
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "$regular",
+  resize: "vertical",
+  minHeight: 80,
+  "&:focus": {
+    outline: 0,
+    borderColor: "$ignite300"
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  },
+  "&::placeholder": {
+    color: "$gray400"
+  }
+});
+TextArea.displayName = "TextArea";
+
+// src/components/Checkbox/index.tsx
+import { Check } from "phosphor-react";
+
+// src/components/Checkbox/styles.ts
+import * as Checkbox from "@radix-ui/react-checkbox";
+var CheckboxContainer = styled(Checkbox.Root, {
+  all: "unset",
+  width: "$6",
+  height: "$6",
+  backgroundColor: "$gray900",
+  borderRadius: "$xs",
+  lineHeight: 0,
+  cursor: "pointer",
+  overflow: "hidden",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "2px solid $ignite300",
+  '&[data-state="checked"]': {
+    backgroundColor: "$ignite300"
+  },
+  "&:focus": {
+    border: "2px solid $ignite300"
+  }
+});
+var slideIn = keyframes({
+  from: {
+    transform: "translateY(-100%)"
+  },
+  to: {
+    transform: "translateY(0)"
+  }
+});
+var slideOut = keyframes({
+  from: {
+    transform: "translateY(0)"
+  },
+  to: {
+    transform: "translateY(-100%)"
+  }
+});
+var CheckboxIndicator = styled(Checkbox.Indicator, {
+  width: "$4",
+  height: "$4",
+  color: "$white",
+  '&[data-state="checked"]': {
+    animation: `${slideIn} 200ms ease-out`
+  },
+  '&[data-state="unchecked"]': {
+    animation: `${slideOut} 200ms ease-out`
+  }
+});
+
+// src/components/Checkbox/index.tsx
+import { jsx as jsx3 } from "react/jsx-runtime";
+var Checkbox2 = (props) => {
+  return /* @__PURE__ */ jsx3(CheckboxContainer, {
+    ...props,
+    children: /* @__PURE__ */ jsx3(CheckboxIndicator, {
+      asChild: true,
+      children: /* @__PURE__ */ jsx3(Check, {
+        weight: "bold"
+      })
+    })
+  });
+};
+Checkbox2.displayName = "Checkbox";
+
+// src/components/MultiStep/styles.ts
+var MultiStepContainer = styled("div", { width: "100%" });
+var Label = styled(Text, {
+  color: "$gray200",
+  defaultVariants: {
+    size: "xs"
+  }
+});
+var Steps = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(var(--steps-size), 1fr)",
+  gap: "$2",
+  marginTop: "$1",
+  width: "100%"
+});
+var Step = styled("div", {
+  height: "$1",
+  borderRadius: "$px",
+  backgroundColor: "$gray600",
+  variants: {
+    active: {
+      true: {
+        backgroundColor: "$gray100"
+      }
+    }
+  }
+});
+
+// src/components/MultiStep/index.tsx
+import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+var MultiStep = ({ size, currentStep = 1 }) => {
+  return /* @__PURE__ */ jsxs3(MultiStepContainer, {
+    children: [
+      /* @__PURE__ */ jsxs3(Label, {
+        children: [
+          "Passo ",
+          currentStep,
+          " de ",
+          size
+        ]
+      }),
+      /* @__PURE__ */ jsx4(Steps, {
+        css: {
+          "--steps-size": size
+        },
+        children: Array.from({ length: size }, (_, i) => i + 1).map((step) => /* @__PURE__ */ jsx4(Step, {
+          active: currentStep >= step
+        }, step))
+      })
+    ]
+  });
+};
+MultiStep.displayName = "MultiStep";
+
+// src/components/Toast/index.tsx
+import { X } from "phosphor-react";
+
+// src/components/Toast/styles.ts
+var ToastContainer = styled("div", {
+  position: "relative",
+  backgroundColor: "$gray600",
+  borderRadius: "$sm",
+  padding: "$3 $5",
+  display: "flex",
+  flexDirection: "column",
+  gap: "$1"
+});
+var ToastCloseButton = styled("button", {
+  cursor: "pointer",
+  lineHeight: 0,
+  border: 0,
+  background: "transparent",
+  position: "absolute",
+  top: "$2",
+  right: "$2",
+  svg: {
+    color: "$gray200"
+  }
+});
+var ToastTitle = styled(Heading, {
+  color: "$white",
+  fontSize: "$xl"
+});
+var ToastDescription = styled(Text, {
+  color: "$gray200",
+  fontSize: "$sm"
+});
+
+// src/components/Toast/index.tsx
+import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+var Toast = ({ title, description, onClose }) => {
+  return /* @__PURE__ */ jsxs4(ToastContainer, {
+    children: [
+      /* @__PURE__ */ jsx5(ToastCloseButton, {
+        "aria-label": "Close toast",
+        onClick: onClose,
+        children: /* @__PURE__ */ jsx5(X, {
+          size: 20
+        })
+      }),
+      /* @__PURE__ */ jsx5(ToastTitle, {
+        children: title
+      }),
+      /* @__PURE__ */ jsx5(Text, {
+        size: "sm",
+        children: description
+      })
+    ]
+  });
+};
 export {
-  Button
+  Avatar2 as Avatar,
+  Box,
+  Button,
+  Checkbox2 as Checkbox,
+  Heading,
+  MultiStep,
+  Text,
+  TextArea,
+  TextInput,
+  Toast
 };
