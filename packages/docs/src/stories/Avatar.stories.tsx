@@ -1,4 +1,4 @@
-import { Avatar, AvatarProps } from '@ignite-ui/react'
+import { Avatar, AvatarProps } from '@ncdev-ignite-ui/react'
 
 import type { StoryObj, Meta } from '@storybook/react'
 
