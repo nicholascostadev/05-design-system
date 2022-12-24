@@ -1,0 +1,2 @@
+import{A as t}from"./index-40498a60.js";import"./index-6a3cdb98.js";import"./es.object.get-own-property-descriptor-030f8564.js";import"./index-d9fa47c7.js";import"./jsx-runtime-50042a16.js";const c={title:"Data display/Avatar",component:t,args:{src:"https://github.com/nicholascostadev.png",alt:"Nicholas Costa"},argTypes:{src:{type:"string"}}},p={},m={args:{src:void 0}},e=["Primary","WithFallback"];export{p as Primary,m as WithFallback,e as __namedExportsOrder,c as default};
+//# sourceMappingURL=Avatar.stories-062ef4a1.js.map
