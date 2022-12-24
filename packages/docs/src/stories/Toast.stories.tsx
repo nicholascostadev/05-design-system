@@ -20,16 +20,7 @@ export default {
     },
   },
 
-  decorators: [
-    (Story) => (
-      <Box
-        as="label"
-        css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}
-      >
-        {Story()}
-      </Box>
-    ),
-  ],
+  decorators: [(Story) => <Box>{Story()}</Box>],
 } as Meta<ToastProps>
 
 export const Primary: StoryObj<ToastProps> = {
